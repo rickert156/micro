@@ -32,7 +32,7 @@ sudo esptool.py --baud 460800 write_flash 0x1000 firmware/ESP32_GENERIC-20250415
 ```
 Встроенный светодиод на GPIO 2  </br>
 
-У меня есть еще плата <strong>ESP32 D1 R32 Wemos</strong>, прошивать ее можно аналогично ESP32 [ESP32 pinout Wemos](https://github.com/rickert156/micro/blob/main/img/esp32_pinout_wemos.png)
+У меня есть еще плата <strong>ESP32 D1 R32 Wemos</strong>, прошивать ее можно аналогично ESP32 ![ESP32 pinout Wemos](https://github.com/rickert156/micro/blob/main/img/esp32_pinout_wemos.png)
 Для проверки платы можно подключиться к ней через такие инструменты, как picocom. Сначале ее необходимо установить
 ```sh
 echo y | sudo pacman -Syu picocom
