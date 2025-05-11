@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>ESP32 распиновка (pinout)</title>
+
+<link href="../wiki/pub/skins/dropshadow/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:500,900&display=swap&subset=cyrillic" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="icon" href="../favicon.ico" type="image/x-icon"> 
+<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="../_dir/js/menu.js"></script>
+
+<!--HTMLHeader--><style type='text/css'><!--.editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border:2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  table.vert td.markup1 { border-bottom:1px solid #ccf; }
+  table.horiz td.markup1 { width:23em; border-right:1px solid #ccf; }
+  table.markup caption { text-align:left; }
+  div.faq p, div.faq pre { margin-left:2em; }
+  div.faq p.question { margin:1em 0 0.75em 0; font-weight:bold; }
+  div.faqtoc div.faq * { display:none; }
+  div.faqtoc div.faq p.question 
+    { display:block; font-weight:normal; margin:0.5em 0 0.5em 20px; line-height:normal; }
+  div.faqtoc div.faq p.question * { display:inline; }
+  td.markup1 pre { white-space: pre-wrap; }
+  .noPmTOC {display:none;}
+.PmTOCdiv { display: inline-block; font-size: 13px; overflow: auto; max-height: 500px;}
+.PmTOCdiv a { text-decoration: none;}
+.back-arrow {font-size: .9em; text-decoration: none;}
+#PmTOCchk + label {cursor: pointer;}
+#PmTOCchk {display: none;}
+#PmTOCchk:not(:checked) + label > .show {display: none;}
+#PmTOCchk:checked + label > .hide {display: none;}
+#PmTOCchk:checked + label + div {display: none;}table.sortable th { cursor: pointer; }
+table.sortable th::after { color: transparent; content: "\00A0\025B8"; }
+table.sortable th:hover::after { color: inherit; content: "\00A0\025B8"; }
+table.sortable th.dir-u::after { color: inherit; content: "\00A0\025BE"; }
+table.sortable th.dir-d::after { color: inherit; content: "\00A0\025B4"; } 
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none;}
+
+--></style>  <meta name='robots' content='index,follow' />
+
+</head>
+
+
+<body>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(54406963, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/54406963" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- ===== top menu ====== -->
+
+<div style="width:100%; background-color: #45656d; background-image: url(../_dir/images/titlefon1.jpg); background-repeat: repeat-x;">
+<div style="max-width:720px; text-align:left; margin: 0 auto;">
+	<div class=titlelogo>
+<A HREF="../"><IMG SRC="../_dir/images/title.png" style="max-width:358px; width:100%; border:0;" ALT="Мой робот"></A>
+	</div>
+	<div class=headertitle>
+	   роботы робототехника микроконтроллеры
+	</div>
+</div>
+</div>
+
+<div style="width:100%; height:1px; background-color: #fff;"></div> 
+
+<header>
+<nav id='cssmenu'>
+<div id="head-mobile"></div>
+<div class="button"></div>
+<ul>
+<li><a href='../' onmouseover="this.style.backgroundColor='#ff5500';" onmouseout="this.style.backgroundColor='#222';">Главная</a></li>
+<li><a href='../stepbystep/' onmouseover="this.style.backgroundColor='#ce0000';" onmouseout="this.style.backgroundColor='#111';">Как сделать робота</a></li>
+<li><a href='../news/' onmouseover="this.style.backgroundColor='#5477B8';" onmouseout="this.style.backgroundColor='#111';">Новости</a></li>
+<li><a href='../sport/' onmouseover="this.style.backgroundColor='#993345';" onmouseout="this.style.backgroundColor='#111';">Спорт</a></li>
+<li><a href='../articles/' onmouseover="this.style.backgroundColor='#757D8E';" onmouseout="this.style.backgroundColor='#111';">Статьи</a></li>
+<li class='active'><a href='index.php' style="background-color:#EA7500;">Wiki</a></li>
+<li><a href='../forum/' onmouseover="this.style.backgroundColor='#5C7896';" onmouseout="this.style.backgroundColor='#111';">Форум</a></li>
+<li><a href='../downloads/' onmouseover="this.style.backgroundColor='#C8BC90';" onmouseout="this.style.backgroundColor='#111';">Downloads</a></li>
+<li><a href='../links/' onmouseover="this.style.backgroundColor='#999900';" onmouseout="this.style.backgroundColor='#111';">Ссылки</a></li>
+<li><a href='../contacts.php' onmouseover="this.style.backgroundColor='#669999';" onmouseout="this.style.backgroundColor='#111';">Контакты</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- ===== /top menu ====== -->
+
+
+
+
+<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" id="contentbg2">
+ <TR>
+<TD>
+
+
+	<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" id="contentbg">
+ 	<TR>
+	<TD>
+
+<CENTER>
+
+	<TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="100%" id="contentbg">
+ 	<TR>
+	<TD align=left>
+
+
+<div id="content">
+
+	<div id="contentleft">
+		<!--PageTitleFmt-->
+
+
+
+
+
+
+
+
+<div class=bread><a href='../' class=bread>Главная</a><img src="images/breadcrumbs.png" class=breadcrumbs><a href='../wiki/' class=bread>ВИКИ</a><img src="images/breadcrumbs.png" class=breadcrumbs><a href='https://myrobot.ru/wiki/index.php?n=Experiences' class=bread><span id="new_name"></span></a></div>
+
+<script>
+    var cur_group = 'Experiences';
+    if (cur_group == 'Components') new_group = 'Компоненты';
+    if (cur_group == 'Articles') new_group = 'Основы';
+    if (cur_group == 'Experiences') new_group = 'Микроконтроллеры';
+    if (cur_group == 'CodeLibrary') new_group = 'Программирование';
+    if (cur_group == 'Projects') new_group = 'Проекты';
+    if (cur_group == 'Robots') new_group = 'Роботы';
+    if (cur_group == 'Tips') new_group = 'Советы и хитрости';
+    document.getElementById("new_name").innerHTML = new_group;
+</script>
+
+<div class=line2px></div> 
+
+<div class=divtitle>
+	<H1>
+		ESP32 распиновка (pinout)
+	</H1>
+</div>
+
+<div class=line2px style="margin-bottom:50px;"></div>
+
+
+
+		<!--/PageTitleFmt-->
+		
+		<!--PageText-->
+<div id='wikitext'>
+<div class='img imgonly'><span class='frame rfloat' style='margin-bottom: 15px; margin-left: 15px; border: 0; background-color: white;'><img src='images/experiences_tm.png' alt='' title='' /></span></div>
+<div class='vspace'></div><h3>ESP32 DEVKIT V1</h3>
+<p>Плата <strong>ESP32 DEVKIT V1</strong> имеет 30 выводов и использует микроконтроллерный модуль ESP-WROOM-32 с двухъядерным 32-битным процессором Tensilica Xtensa LX6.
+</p>
+<p class='vspace'><br />
+</p><div class='img imgonly'><img src='https://myrobot.ru/wiki/uploads/Experiences/esp32_pinout.png' alt='ESP32 распиновка (pinout)' title='ESP32 распиновка (pinout)' /></div>
+<p class='vspace'><br />
+</p><hr />
+<div class='vspace'></div><h3>Описание и назначение выводов ESP32 DEVKIT V1</h3>
+<hr />
+<p class='vspace'><br />
+<span  style='background-color: #004040; color: white; padding: 5px;'><strong>GND</strong></span> — общий провод, "земля"
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: black; color: white; padding: 5px;'><strong>5 .. 42</strong></span> — номер пина на чипе ESP32
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: red; color: white; padding: 5px;'><strong>Выводы питания</strong></span>
+</p>
+<p class='vspace'><strong>VIN</strong> — контакт для подключения внешнего источника питания 5V (стабилизатор AMS1117-3.3 позволяет подавать питание в широком диапазоне от 5 до 10 V). Хотя стабилизатор допускает подачу более высокого напряжения (до 15 V), но без дополнительного охлаждения возможен перегрев микросхемы.
+</p>
+<p class='vspace'><strong>3.3V</strong> — контакт, на который подается выходное напряжение внутрисхемного стабилизатора. Может быть использован для питания подключаемых к плате датчиков.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #d61103; color: #f7cd01; padding: 5px;'><strong>I/O</strong></span>
+</p>
+<p class='vspace'><strong>I</strong> — контакты могут быть использованы только как входы.
+</p>
+<p class='vspace'><strong>I/O</strong> — контакты могут быть использованы как входы и выходы.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #008585; color: white; padding: 5px;'><strong>Выводы GPIO</strong></span>
+</p>
+<p class='vspace'><strong>GPIO</strong> (General Purpose Interput Output) — контакты ввода/вывода общего назначения. Могут быть сконфигурированы как входы или выходы и программно назначены на различные функции. Распиновка представлена на рисунке.
+</p>
+<p class='vspace'>Без каких-либо ограничений в качестве входов и выходов в ESP32 DevKit V1 можно использовать следующие 12 выводов GPIO:<br /><strong>16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 32, 33</strong>.<br />Эти выводы имеют встроенные программно-подключаемые резисторы подтяжки 45 кОм. 
+</p>
+<p class='vspace'>Выводы GPIO <strong>34, 35, 36, 39</strong> можно использовать только на ввод, у них отсутствуют встроенные подтягивающие резисторы.
+</p>
+<p class='vspace'><strong><em>Выводы, которые следует использовать с осторожностью</em></strong>
+</p>
+<p class='vspace'>GPIO 1, 3 подключены к встроенному преобразователя интерфейса TTL &lt;-&gt; USB (системный UART0).
+</p>
+<p class='vspace'>GPIO 2, 4, 12, 13 при старте ESP32 должны иметь низкий уровень, не подтягивайте их внешними резисторами к питанию. GPIO2 используется для входа в режим прошивки, на нем по умолчанию низкий уровень и он подключен к встроенному светодиоду. GPIO 12 управляет напряжением питания внешней flash-памяти (если подтянуть к питанию, загрузка будет невозможна).
+</p>
+<p class='vspace'>GPIO 0, 5, 14, 15 при старте должны иметь высокий уровень, не подтягивайте их внешней подтяжкой к земле. GPIO0 используется во время старта. GPIO5 используется для управления flash-памятью, подключенной внутри модуля к чипу. По умолчанию на нем высокий уровень. Изменение уровня при старте может нарушить работу flash-памяти.
+</p>
+<p class='vspace'><strong><em>Выводы, которые могут изменять уровень при загрузке</em></strong>
+</p>
+<p class='vspace'>Если в вашем проекте есть выходы, подключенные к этим GPIO, вы можете получить неожиданные включения/отключения нагрузки при перезагрузке или загрузке ESP32.
+</p>
+<p class='vspace'>GPIO0 – выводит ШИМ-сигнал при загрузке<br />GPIO1 – отладочный вывод при загрузке<br />GPIO3 – высокий уровень при загрузке<br />GPIO5 – выводит ШИМ-сигнал при загрузке<br />GPIO14 – выводит ШИМ-сигнал при загрузке<br />GPIO15 – выводит ШИМ-сигнал при загрузке
+</p>
+<p class='vspace'>Абсолютный максимальный ток, потребляемый GPIO, составляет 40 мА в соответствии со спецификацией ESP32.
+</p>
+<p class='vspace'>Абсолютный максимальный номинал напряжения для входных контактов составляет 3,6 В. Превышение этого значения может привести к повреждению микросхемы!
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #fe8d00; color: black; padding: 5px;'><strong>EN</strong></span>
+</p>
+<p class='vspace'><strong>EN</strong> (Chip Enable) — контакт включения ESP32 в рабочий режим, одновременно может быть задействован для перезапуска контроллера (Reset).
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #387aff; color: white; padding: 5px;'><strong>ADC</strong></span>
+</p>
+<p class='vspace'><strong>A1</strong>, <strong>A2</strong> —  выводы встроенного аналого-цифрового преобразователя (АЦП). Входные каналы АЦП имеют разрешение 12 бит. Преобразованные значения лежат в интервале 0 — 4095. Входной диапазон напряжений составляет от 0 до 3,3 В. Есть возможность установить разрешение каналов АЦП в коде, а также диапазон АЦП. 
+</p>
+<p class='vspace'>Контакты A2 (ADC2) нельзя использовать при использовании Wi-Fi.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #ff99cc; color: black; padding: 5px;'><strong>DAC</strong></span>
+</p>
+<p class='vspace'><strong>DAC</strong> — цифро-аналоговый преобразователь (ЦАП). На ESP32 имеются два 8-битных канала ЦАП для преобразования цифровых сигналов в аналоговые выходные сигналы напряжения. 
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #ffff00; color: black; padding: 5px;'><strong>UART</strong></span>
+</p>
+<p class='vspace'><strong>UART</strong> (Universal Asynchronous Receiver-Transmitter) — асинхронный последовательный интерфейс устанавливает связь с другими устройствами по шине UART. Каждая линия может быть переназначена пользователем на любой GPIO.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #99ff99; color: black; padding: 5px;'><strong>SPI</strong></span>
+</p>
+<p class='vspace'><strong>SPI</strong> (Serial Peripheral Interface) — последовательный периферийный интерфейс. ESP32 имеет два SPI (VSPI и HSPI) в ведущем и подчиненном режимах.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #ffcd00; color: black; padding: 5px;'><strong>TOUCH</strong></span>
+</p>
+<p class='vspace'><strong>TOUCH</strong> — контакты ёмкостных сенсорных датчиков. Реагируют не изменение ёмкости в электрической цепи вывода, вызванное прикосновением пальца к соответствующему контакту. Эти контакты могут быть легко встроены в емкостные панели и заменять механические кнопки. TOUCH-контакты также могут служить источником пробуждения ESP32 из энергосберегающих режимов. Распиновка представлена на рисунке.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #ff0066; color: white; padding: 5px;'><strong>I2C</strong></span>
+</p>
+<p class='vspace'><strong>Интерфейс I2C</strong> — последовательная асимметричная шина. I2C используется для подключения датчиков и периферийных устройств. 
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #ff24a7; color: white; padding: 5px;'><strong>RTC</strong></span>
+</p>
+<p class='vspace'><strong>RTC</strong> — ядро низкого энергопотребления.<br />ESP32 имеет сопроцессор с ультранизким энергопотреблением (Ultra Low Power — ULP). Выводы RTC GPIO, перенаправленные в подсистему с низким энергопотреблением, могут использоваться для выхода ESP32 из глубокого сна при работе сопроцессора  (ULP). Требуют предварительной программной подготовки. 
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #336699; color: white; padding: 5px;'><strong>VDET</strong></span>
+</p>
+<p class='vspace'><strong>VDET</strong> — аналоговые контакты ядра низкого энергопотребления (RTC). По аналогии с цифровыми контактами, предназначены для вывода процессора ESP32 из режимов энергосбережения. Требуют предварительной программной подготовки.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #ccff66; color: black; padding: 5px;'><strong>XTAL_32</strong></span>
+</p>
+<p class='vspace'><strong>XTAL_32</strong> — контакты внешнего кварцевого генератора с частотой 32.768 КГц.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #669999; color: white; padding: 5px;'><strong>Датчик Холла</strong></span>
+</p>
+<p class='vspace'><strong>Sens_VP (positive), Sens_VN (negative)</strong> — контакты встроенного датчика Холла, который обнаруживает изменения в магнитном поле в его окружении.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<strong>PWM</strong> (pulse-width modulation) — широтно-импульсная модуляция (ШИМ) управляет мощностью методом пульсирующего включения и выключения вывода. ESP32 имеет 16 независимых ШИМ-каналов. Практически все контакты, которые могут выступать в качестве выходов, могут использоваться в качестве выходов ШИМ (GPIO с 34 по 39 не могут генерировать ШИМ). Для генерации ШИМ-сигнала необходимо в программе задать частоту сигнала, скважность, ШИМ-канал, а также GPIO, на который вы хотите вывести сигнал.
+</p>
+<div class='vspace'></div><hr />
+<p class='vspace'><br />
+<span  style='background-color: #00bbf8; color: white; padding: 5px;'><strong>Onboard LED</strong></span>
+</p>
+<p class='vspace'>Плата имеет встроенный светодиод. Он подключен к GPIO2.
+</p>
+<p class='vspace'><br />
+</p><hr />
+<p class='vspace'><span  style='color: #005971; font-weight: bold;'>Материалы по теме:</span>
+</p>
+<div class='vspace'></div><ul><li><a class='urllink' href='/downloads/scheme_nodemcu.php' rel='nofollow'>Схема ESP32</a>
+<div class='vspace'></div></li><li><a class='urllink' href='/downloads/driver-cp2102-esp32.php' rel='nofollow'>Скачать драйвер CP2102 для ESP32</a>
+<div class='vspace'></div></li><li><a class='urllink' href='/downloads/download_micropython_esp32.php' rel='nofollow'>Скачать MicroPython ESP32</a>
+<div class='vspace'></div></li><li><a class='urllink' href='/stepbystep/mc_first_project_esp32.php' rel='nofollow'>Первый проект на микроконтроллере ESP32</a>
+<div class='vspace'></div></li><li><a class='urllink' href='/stepbystep/mc_first_project_esp32_wifi.php' rel='nofollow'>Программируем микроконтроллер ESP32 по Wi-Fi</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Experiences.NodemcuPinout'>ESP8266 распиновка (pinout)</a>
+</li></ul><div class='vspace'></div><hr />
+<table border='0' width='100%' ><tr><td width='140px'  valign='top'>
+<div class='img imgonly'><img src='../_dir/picts/myrobot.gif' alt='' title='' /></div>
+</td><td  valign='top'>
+<p><small>Размещение этой статьи на других сайтах как полностью, так и частично разрешено только после согласования с администрацией myROBOT.RU</small>
+</p></td></tr></table>
+<hr />
+</div>
+
+
+
+    		<div class="contentpageactions">
+      			<a rel="nofollow" href='https://myrobot.ru/wiki/index.php?n=Experiences.Esp32Pinout?action=browse'>Просмотр</a> -
+      			<a rel="nofollow" href='https://myrobot.ru/wiki/index.php?n=Experiences.Esp32Pinout?action=edit'>Правка</a> -
+      			<a rel="nofollow" href='https://myrobot.ru/wiki/index.php?n=Experiences.Esp32Pinout?action=diff'>История</a> -
+      			<a rel="nofollow" href='https://myrobot.ru/wiki/index.php?n=Experiences.Esp32Pinout?action=print' target='_blank'>Печать</a> -
+      			<a href='https://myrobot.ru/wiki/index.php?n=Experiences.RecentChanges'>Недавние изменения</a> -
+      			<a href='https://myrobot.ru/wiki/index.php?n=Main.MyRobotWiki'>О Вики</a>
+			<br>
+			<div class="contenttime">Редакция от 01.08.2024 16:54</div>
+    		</div>
+	
+
+	</div>
+
+
+
+
+	<div id="r_sidebar">
+		<ul>
+			<!--PageSearchFmt-->
+			<li id="Search">
+				<h2>Найти в Wiki</h2>
+				<div class="search">
+					<form id="searchform" action='index.php'>
+						<input type='hidden' name='n' value='Experiences.Esp32Pinout' />
+						<input type='hidden' name='action' value='search' />
+						<input class='searchBox' type='text' name='q' value="" />
+						<input class='searchButton' type='submit' value='&gt;&gt;' />
+					</form>
+				</div>
+			</li>
+			<!--/PageSearchFmt-->
+		</ul>
+		<!--PageRightFmt-->
+			
+			<ol><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Main.HomePage'>WIKI (главная)</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Articles.HomePage'>ОСНОВЫ</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Components.HomePage'>КОМПОНЕНТЫ</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Experiences.HomePage'>МИКРОКОНТРОЛЛЕРЫ</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=CodeLibrary.HomePage'>ПРОГРАММИРОВАНИЕ</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Projects.HomePage'>ПРОЕКТЫ</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Robots.HomePage'>РОБОТЫ</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='https://myrobot.ru/wiki/index.php?n=Tips.HomePage'>СОВЕТЫ и ХИТРОСТИ</a>
+</li></ol><div class='vspace'></div>
+
+		 
+		<!--/PageRightFmt-->
+
+    		<div class="contenttime">
+      			<a rel="nofollow" href='?n=Site.SideBar?action=edit'>.</a>
+    		</div>
+
+
+<div style="margin-top:30px"></div>
+
+<!-- Yandex.RTB R-A-394342-1 -->
+<div id="yandex_rtb_R-A-394342-1"></div>
+<script type="text/javascript">
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            Ya.Context.AdvManager.render({
+                blockId: "R-A-394342-1",
+                renderTo: "yandex_rtb_R-A-394342-1",
+                async: true
+            });
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+</script>
+
+
+
+
+	</div>
+
+</div>
+
+
+	    </TD>
+	  </TR>
+	</TABLE>
+
+</CENTER>
+
+	    </TD>
+	  </TR>
+	</TABLE>
+
+    </TD>
+  </TR>
+</TABLE>
+
+
+
+
+<div style="clear: both;"></div>
+
+<div class=line1px style="margin:0 auto; max-width:1200px; margin-top:30px; width:95%;"></div>
+
+<div id="footerbg">
+<!--PageFooterFmt-->
+	<div id="footer">
+
+
+
+<!-- copyrights -->
+
+
+	<FONT style="font-size: 13px; color: #999;">
+	Copyright &copy; myrobot.ru, 2005-2023
+	</FONT>
+	<BR><BR>
+
+
+<noindex><A HREF='https://www.pmwiki.org/' target=_blank><IMG SRC='pub/skins/dropshadow/wikiban.gif' WIDTH=88 HEIGHT=31 BORDER=0 ALT='PmWiki'></A></noindex>
+
+&nbsp;
+
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=54406963&amp;from=informer"
+target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/54406963/3_0_FFFD20FF_FFDD00FF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="54406963" data-lang="ru" /></a>
+<!-- /Yandex.Metrika informer -->
+
+
+
+
+&nbsp;
+
+
+<!-- Rating@Mail.ru counter -->
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []);
+_tmr.push({id: "1148582", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) {
+  if (d.getElementById(id)) return;
+  var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+  ts.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//top-fwz1.mail.ru/js/code.js";
+  var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+})(document, window, "topmailru-code");
+</script><noscript><div>
+<img src="//top-fwz1.mail.ru/counter?id=1148582;js=na" style="border:0;position:absolute;left:-9999px;" alt="" />
+</div></noscript>
+<!-- //Rating@Mail.ru counter -->
+
+<!-- Rating@Mail.ru logo -->
+<a href="https://top.mail.ru/jump?from=1148582">
+<img src="//top-fwz1.mail.ru/counter?id=1148582;t=476;l=1" 
+style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /></a>
+<!-- //Rating@Mail.ru logo -->
+
+
+	<br>
+	<br>
+
+
+	</div>
+<!--/PageFooterFmt-->
+</div>
+
+
+<BR></body></html>
