@@ -1,5 +1,7 @@
 from machine import Pin
+from config import name_network, pass_network
 import time, network
+
 
 def report(timeout:int):
     PIN = Pin(2, Pin.OUT)
@@ -22,7 +24,7 @@ def connect_wifi():
         time.sleep(2)
         log(update=inet_wifi.scan())
         inet_wifi.active(True)
-        inet_wifi.connect("TP-Link_B029-Link_BO29", "21650185")
+        inet_wifi.connect(name_network, pass_network)
         if inet_wifi.isconnected():
             report(timeout=1)
             log(update="Connect")
