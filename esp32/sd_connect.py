@@ -17,3 +17,4 @@ def sd_connect():
     except Exception as err:
         print(f"Ошибка монтирования SD-карты: {err}" )
 
+sd_connect()
