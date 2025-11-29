@@ -18,6 +18,22 @@ python3 -m venv venv && source venv/bin/activate.fish && pip install -r package.
 ```sh
 echo y | sudo pacman -Syu esptool picocom
 ```
+Добавим пользователя в группу, что бы можно было работать с платой(в противном случае пишет ошибку о том, что устройство уже занято, не совсем очевидная проблема)
+```sh
+ls -l /dev/ttyUSB*
+```
+```sh
+sudo usermod -aG uucp $USER
+```
+Перезапускаем сеанс(или делаем reboot системы) и тестируем коннект mpremote
+```sh
+mpremote connect /dev/ttyUSB0
+```
+Должно быть что-то вроде такого по итогу
+```sh
+Connected to MicroPython at /dev/ttyUSB0
+Use Ctrl-] or Ctrl-x to exit this shell
+```
 
 **Если тут все ок - можем идти дальше**
 
