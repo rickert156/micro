@@ -1,18 +1,25 @@
 # Micropython + ESP32
 
-## Прошивка плат
-Необходимо установить утилиту для прошивки плат - esptool  
-Ubuntu/Debian
+## Требование:
+- esptool(для прошивки плат)
+- mpremote(python3 библиотека для загрузки скриптов на платы)
+- picocom(для коннекта к плате для тестирования)
+
+## Стартовые действия(на новом компе, к примеру)
+клонируем реп
 ```sh
-sudo apt update && sudo apt install esptool -y
+mkdir -p ~/project/ && cd ~/project && git clone https://github.com/rickert156/micro 
 ```
-Endeavouros(Arch)
+поставим библиотеки
+```
+python3 -m venv venv && source venv/bin/activate.fish && pip install -r package.txt
+```
+Установим esptool(для Endeavours и других arch-based дистрибутивов)
 ```sh
 echo y | sudo pacman -Syu esptool
 ```
 
-На Ubuntu/Debian/Sparky по какой-то причине esptool работает криво, из репa арча работает нормально.  
-Протестированный(и подошедшие прошивки загружены в firmware)
+**Если тут все ок - можем идти дальше**
 
 ## GPIO ESP32 
 ![ESP32](https://github.com/rickert156/micro/blob/main/img/esp32_pinout.png)
