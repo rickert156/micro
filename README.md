@@ -14,9 +14,9 @@ mkdir -p ~/project/ && cd ~/project && git clone https://github.com/rickert156/m
 ```
 python3 -m venv venv && source venv/bin/activate.fish && pip install -r package.txt
 ```
-Установим esptool(для Endeavours и других arch-based дистрибутивов)
+Установим esptool и picocom(для Endeavours и других arch-based дистрибутивов)
 ```sh
-echo y | sudo pacman -Syu esptool
+echo y | sudo pacman -Syu esptool picocom
 ```
 
 **Если тут все ок - можем идти дальше**
